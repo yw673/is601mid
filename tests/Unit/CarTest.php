@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Car;
+use PHPUnit\Framework\Constraint\IsType;
 
 class CarTest extends TestCase
 {
@@ -53,5 +54,12 @@ class CarTest extends TestCase
 
         $this->assertTrue($car->save());
 
+    }
+
+    public function testInt()
+    {
+        $car = Car::inRandomOrder()->first();
+        $year = (int)$car->year;
+        $this->assertInternalType("int", $year);
     }
 }
