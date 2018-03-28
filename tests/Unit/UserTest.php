@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 
+
 class UserTest extends TestCase
 {
     /**
@@ -18,9 +19,20 @@ class UserTest extends TestCase
     {
         $user = new User();
         $user->name = 'my name';
-        $user->email = 'email@email.com';
+        $user->email = 'my email';
         $user->password = 'my password';
 
         $this->assertTrue($user->save());
+    }
+
+    public function testDelete()
+    {
+        $user = new User();
+        $user->name = 'my name';
+        $user->email ='my email';
+        $user->password = 'my password';
+        $user->save();
+
+        $this->assertTrue($user->delete());
     }
 }
