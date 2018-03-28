@@ -45,4 +45,13 @@ class CarTest extends TestCase
         $this->assertEquals($carCount,50);
 
     }
+
+    public function testUpdate()
+    {
+        $car = Car::inRandomOrder()->first();
+        $car->year = '2000';
+
+        $this->assertTrue($car->save());
+
+    }
 }
