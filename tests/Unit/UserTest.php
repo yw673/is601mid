@@ -25,17 +25,14 @@ class UserTest extends TestCase
 
         $this->assertTrue($user->save());
 
-        $user->delete();
+
     }
 
 
     public function testDelete()
     {
-        $user = new User();
-        $user->name = 'my name';
-        $user->email ='my email';
-        $user->password = 'my password';
-        $user->save();
+        $user =  User::inRandomOrder()->first();
+
 
         $this->assertTrue($user->delete());
     }
