@@ -48,4 +48,13 @@ class UserTest extends TestCase
         $this->assertEquals($userCount,50);
 
     }
+
+    public function testUpdate()
+    {
+        $user = User::inRandomOrder()->first();
+        $user->name = 'Steve Smith';
+
+        $this->assertTrue($user->save());
+
+    }
 }
