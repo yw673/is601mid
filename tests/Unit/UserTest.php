@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 
 
+
 class UserTest extends TestCase
 {
     /**
@@ -23,7 +24,10 @@ class UserTest extends TestCase
         $user->password = 'my password';
 
         $this->assertTrue($user->save());
+
+        $user->delete();
     }
+
 
     public function testDelete()
     {
@@ -34,5 +38,14 @@ class UserTest extends TestCase
         $user->save();
 
         $this->assertTrue($user->delete());
+    }
+
+    public function testUserCount()
+    {
+        $user = User::All();
+        $userCount = $user->count();
+
+        $this->assertEquals($userCount,50);
+
     }
 }
