@@ -18,8 +18,8 @@ class UserTest extends TestCase
     {
         $user = new User();
         $user->name = 'my name';
-        $user->email = 'my email';
-        $user->password = 'mypassword';
+        $user->email = 'email@email.com';
+        $user->password = 'my password';
 
         $this->assertTrue($user->save());
     }
