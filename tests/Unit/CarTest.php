@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Car;
 use PHPUnit\Framework\Constraint\IsType;
 
+
 class CarTest extends TestCase
 {
     /**
@@ -61,5 +62,12 @@ class CarTest extends TestCase
         $car = Car::inRandomOrder()->first();
         $year = (int)$car->year;
         $this->assertInternalType("int", $year);
+    }
+
+    public function testMake()
+    {
+        $car = Car::inRandomOrder()->first();
+        $make = $car->make;
+        $this->assertContains($make,$array = array ('ford','toyota','honda'));
     }
 }
